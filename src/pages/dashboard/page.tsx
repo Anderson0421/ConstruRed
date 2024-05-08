@@ -1,9 +1,11 @@
 import backgroundImage from '../../assets/images/wback.webp';
+import NavbarDashboard from './components/Navbar';
 import SidebarDashboard from './components/Sidebar';
 
 export default function Dashboard() {
     return (
-        <section style={{ position: 'relative', height: '100vh' }} className='bg-black'>
+        <section style={{ position: 'relative', height: '100vh' }} 
+        className='relative flex bg-black overflow-hidden'>
             <div
                 style={{
                     position: 'absolute',
@@ -17,6 +19,7 @@ export default function Dashboard() {
                     filter: 'blur(72px) brightness(170%)',
                 }}
             />
+            <NavbarDashboard />
             <SidebarDashboard />
         </section>
     )
