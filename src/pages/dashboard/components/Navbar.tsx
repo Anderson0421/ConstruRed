@@ -33,19 +33,14 @@ export default function NavbarDashboard() {
     }
 
     return (
-        <nav className="ml-80 max-sm:hidden max-lg:ml-10 max-sm:mx-5 max-sm:pr-0 mt-5 flex h-max justify-between w-full pr-10">
-            <div className={`flex gap-2 flex-col ${isOpen ? 'opacity-0 transition-all duration-300' : ''}`}>
+        <nav className="flex max-sm:hidden h-max justify-between w-full pr-10">
+            <div className={`flex gap-2  ${isOpen ? 'opacity-0 transition-all duration-300' : ''}`}>
                 <div className="flex gap-2 text-white  items-center">
                     <IoMdHome className="text-gray-200 w-4 h-4" />
                     <span className="font-semibold text-xs">/</span>
                     <span className="font-thin text-sm">
                         Dashboard
                     </span>
-                </div>
-                <div className="text-white font-semibold mt-1">
-                    <h1>
-                        Dashboard
-                    </h1>
                 </div>
             </div>
             <div className="flex gap-5 items-center">
