@@ -10,6 +10,7 @@ export default function Dashboard() {
         queryKey: ['autoLogin'],
         queryFn: AutoLogin,
     })
+    console.log(data)
 
     return (
         <section style={{ position: 'relative', height: '100vh' }}
