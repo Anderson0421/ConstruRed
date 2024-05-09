@@ -6,12 +6,27 @@ import { BiSearch as SearchIcon } from "react-icons/bi";
 import { MdMenuOpen } from "react-icons/md";
 import { OpenMenuStore } from "../../../store/openMenu";
 import { MdMenu } from "react-icons/md";
-
+import { LuLogOut } from "react-icons/lu";
+import { useMutation } from "@tanstack/react-query";
+import { LogOut } from "../../../api/FetchAPI";
+import { useNavigate } from "react-router-dom";
 
 export default function NavbarDashboard() {
 
     const SetIsOpenFN = OpenMenuStore((state => state.setIsOpen))
     const isOpen = OpenMenuStore((state => state.isOpen))
+
+    const navigate = useNavigate()
+
+    const LogoutMutation = useMutation({
+        mutationFn: LogOut,
+        onSuccess: () => {
+            console.log('Logout')
+            navigate('/login')
+        },
+    })
+
+
 
     const HandleOpenMenu = () => {
         SetIsOpenFN()
@@ -58,6 +73,9 @@ export default function NavbarDashboard() {
                 </button>
                 <button>
                     <IoSettingsSharp className="text-gray-200 w-5  h-5" />
+                </button>
+                <button className="text-gray-100 z-10" onClick={()=>LogoutMutation.mutate()}>
+                    <LuLogOut className="text-gray-200 w-5  h-5" />
                 </button>
             </div>
         </nav>
