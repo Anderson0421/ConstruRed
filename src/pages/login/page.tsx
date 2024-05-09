@@ -14,8 +14,8 @@ export default function LoginPage() {
         onSuccess: () => {
             history('/')
         },
-        onError: (error) => {
-            console.log(error)
+        onError: () => {
+            console.log('XD error')
         }
     })
 

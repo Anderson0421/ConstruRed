@@ -1,16 +1,30 @@
+import { useQuery } from '@tanstack/react-query';
 import backgroundImage from '../../assets/images/wback.webp';
 import NavbarDashboard from './components/Navbar';
 import SidebarDashboard from './components/Sidebar';
-import { useQuery } from '@tanstack/react-query';
 import { AutoLogin } from '../../api/FetchAPI';
+import { SetDataUser } from '../../store/setUserData';
+import { useNavigate } from 'react-router-dom';
+import LoginPage from '../login/page';
 
 export default function Dashboard() {
-    
+    const navigate = useNavigate()
     const { data } = useQuery({
         queryKey: ['autoLogin'],
         queryFn: AutoLogin,
+        staleTime: Infinity,
     })
-    console.log(data)
+    const setDataUser = SetDataUser(state => state.setDataUser);
+    setDataUser(data)
+
+
+    if (!data) {
+        return (
+            <h1>
+                Loading
+            </h1> 
+        )
+    }
 
     return (
         <section style={{ position: 'relative', height: '100vh' }}

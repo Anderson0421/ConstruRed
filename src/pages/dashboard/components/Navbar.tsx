@@ -1,8 +1,7 @@
 import { IoMdHome } from "react-icons/io";
 import { MdCampaign } from "react-icons/md";
-import { IoSettingsSharp } from "react-icons/io5";
-import { Input } from '@nextui-org/react';
 import { BiSearch as SearchIcon } from "react-icons/bi";
+import { Input } from '@nextui-org/react'
 import { MdMenuOpen } from "react-icons/md";
 import { OpenMenuStore } from "../../../store/openMenu";
 import { MdMenu } from "react-icons/md";
@@ -10,6 +9,7 @@ import { LuLogOut } from "react-icons/lu";
 import { useMutation } from "@tanstack/react-query";
 import { LogOut } from "../../../api/FetchAPI";
 import { useNavigate } from "react-router-dom";
+import { DropdownMenuDemo } from "./DropDownUser";
 
 export default function NavbarDashboard() {
 
@@ -71,12 +71,12 @@ export default function NavbarDashboard() {
                 <button>
                     <MdCampaign className="text-gray-200 w-5  h-5" />
                 </button>
-                <button>
-                    <IoSettingsSharp className="text-gray-200 w-5  h-5" />
-                </button>
-                <button className="text-gray-100 z-10" onClick={()=>LogoutMutation.mutate()}>
+                <button className="text-gray-100 z-10" onClick={() => LogoutMutation.mutate()}>
                     <LuLogOut className="text-gray-200 w-5  h-5" />
                 </button>
+                <div className="flex items-center gap-4 z-10">
+                    <DropdownMenuDemo />
+                </div>
             </div>
         </nav>
     )
