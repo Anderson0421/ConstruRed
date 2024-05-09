@@ -4,11 +4,8 @@ import NavbarDashboard from './components/Navbar';
 import SidebarDashboard from './components/Sidebar';
 import { AutoLogin } from '../../api/FetchAPI';
 import { SetDataUser } from '../../store/setUserData';
-import { useNavigate } from 'react-router-dom';
-import LoginPage from '../login/page';
 
 export default function Dashboard() {
-    const navigate = useNavigate()
     const { data } = useQuery({
         queryKey: ['autoLogin'],
         queryFn: AutoLogin,
