@@ -17,7 +17,8 @@ export default function ColaboradoresPage() {
 
     const { data } = useQuery({
         queryFn: GetEmpleados,
-        queryKey: ['colaboradores']
+        queryKey: ['colaboradores'],
+        staleTime: 1000 * 60 * 5,
     })
 
     const columns = [
@@ -78,24 +79,25 @@ export default function ColaboradoresPage() {
             <div className="text-white ">
                 <div className="relative">
                     <h1 className="text-2xl mt-5 font-bold">Colaboradores</h1>
-                    <div className="flex items-center w-full justify-end pr-2 absolute inset-0">
+                    <div className="flex items-center w-full justify-end pr-2 max-sm:relative max-sm:mt-3 max-sm:justify-start absolute inset-0">
                         <DropdownMenu >
-                            <DropdownMenuTrigger >
-                                <Button className="bg-black flex items-center gap-4" variant={"default"}>
-                                    <span>
-                                        Exportar
-                                    </span>
-                                    <FaDownload className="w-5 h-5" />
-                                </Button>
+                            <DropdownMenuTrigger className="bg-black flex items-center gap-4 px-4 py-2 rounded-xl">
+                                <span>
+                                    Exportar
+                                </span>
+                                <FaDownload className="w-5 h-5" />
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="bg-black p-2 text-white border-none rounded-lg">
                                 <DropdownMenuItem onClick={ExportToExcelButton({ data })} className="items-center flex gap-2 justify-between">
                                     <span>Excel</span> <SiMicrosoftexcel className="w-4 h-4" />
                                 </DropdownMenuItem>
                                 <DropdownMenuItem className="items-center flex gap-2 justify-between">
-                                    <CSVLink data={data} filename="Colaboradores.csv" className="w-full">
-                                        <span>CSV</span>
-                                    </CSVLink>
+                                    {
+                                        data &&
+                                        <CSVLink data={data} filename="Colaboradores.csv">
+                                            <span>CSV</span>
+                                        </CSVLink>
+                                    }
                                     <BsFiletypeCsv className="w-4 h-4" />
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
@@ -104,16 +106,12 @@ export default function ColaboradoresPage() {
                 </div>
                 <DataTableTMPLT columns={columns} data={data} />
                 <div>
-                    <div>
-                        <Button className="bg-black flex items-center gap-3"
-                        
-                        >
-                            <LuUserPlus className="w-5 h-5" />
-                            <span>
-                                Agregar colaborador
-                            </span>
-                        </Button>
-                    </div>
+                    <Button className="bg-black flex mt-5 items-center gap-3">
+                        <LuUserPlus className="w-5 h-5" />
+                        <span>
+                            Agregar colaborador
+                        </span>
+                    </Button>
                 </div>
             </div>
         </TemplateDashboard>

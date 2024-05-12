@@ -40,7 +40,10 @@ export default function SidebarDashboard() {
                     ListItems.map((item, index) => {
                         if (item.permission === RolUser) {
                             return (
-                                <Link to={item.valor} key={index} className="flex items-center gap-2 text-white font-semibold py-3 px-4 rounded-xl hover:bg-blue-950/40">
+                                <Link to={item.valor} key={index}
+                                    className=
+                                    {`flex items-center gap-2 text-white font-semibold py-3 px-4 rounded-xl hover:bg-blue-950/40 ${window.location.pathname === item.valor ? 'bg-blue-950/40' : ''}`}>
+
                                     <item.Icon className="w-6 h-6" />
                                     <span className="text-sm">
                                         {item.clave}
@@ -55,10 +58,10 @@ export default function SidebarDashboard() {
                 Configuración
             </h1>
             <div className="flex flex-col gap-2 max-sm:gap-1 w-full z-30">
-                <Link to={"#"} className="flex items-center gap-2 text-white font-semibold py-3 px-4 rounded-xl hover:bg-blue-950/40">
+                <Link to={"/account/"} className="flex items-center gap-2 text-white font-semibold py-3 px-4 rounded-xl hover:bg-blue-950/40">
                     <MdManageAccounts className="w-5 h-5" />
                     <span className="text-sm">
-                        Account
+                        Profile
                     </span>
                 </Link>
                 <Link to={"#"} className="flex items-center gap-2 text-white font-semibold py-3 px-4 rounded-xl hover:bg-blue-950/40">

@@ -5,10 +5,9 @@ import ColaboradoresPage from './pages/colaboradores/page'
 import InformesPage from './pages/informes/page'
 import ProyectosPage from './pages/proyectos/page'
 import PageAgendaAdmin from './pages/agenda/page'
-
+import AccountPage from './pages/account/page'
 
 function App() {
-
   return (
     <Router>
       <Routes>
@@ -18,6 +17,7 @@ function App() {
         <Route path="/informes" element={<InformesPage />} />
         <Route path="/proyectos" element={<ProyectosPage />} />
         <Route path="/agenda" element={<PageAgendaAdmin />} />
+        <Route path="/account" element={<AccountPage />} />
       </Routes>
     </Router>
   )

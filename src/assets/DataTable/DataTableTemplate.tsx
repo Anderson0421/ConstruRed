@@ -27,6 +27,10 @@ export default function DataTableTMPLT({ columns, data }: { columns: any, data: 
             selectableRows
             paginationPerPage={10}
             pagination
+            progressPending={!data}
+            progressComponent={<div className='top-0 left-0 z-50 w-full h-96 flex items-center justify-center bg-black bg-opacity-50'>
+                <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-900"></div>
+            </div>}
             customStyles={{
                 rows: {
                     style: {
