@@ -1,102 +1,77 @@
 import TemplateDashboard from "../../layouts/TemplateDashboard";
-import Datatable, { createTheme } from "react-data-table-component";
-import { SlOptionsVertical } from "react-icons/sl";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "../../components/ui/dropdown-menu"
-import { Link } from "react-router-dom";
-import { VscEye } from "react-icons/vsc";
-import { FiEdit3 } from "react-icons/fi";
-import { MdOutlineDeleteSweep } from "react-icons/md";
 import { Button } from "../../components/ui/button";
 import { LuUserPlus } from "react-icons/lu";
 import { SiMicrosoftexcel } from "react-icons/si";
-import { FaRegFilePdf } from "react-icons/fa";
 import { BsFiletypeCsv } from "react-icons/bs";
 import { FaDownload } from "react-icons/fa6";
-
+import DataTableTMPLT from "../../assets/DataTable/DataTableTemplate";
+import { useQuery } from "@tanstack/react-query";
+import { GetEmpleados } from "../../api/CRUDEmpleados";
+import ActionsDB from "../../assets/DataTable/actions/ActionDataTable";
+import * as XLSX from 'xlsx';
+import { ColaboradorType } from "../../api/type";
+import { CSVLink } from "react-csv";
 
 export default function ColaboradoresPage() {
 
+    const { data } = useQuery({
+        queryFn: GetEmpleados,
+        queryKey: ['colaboradores']
+    })
+
     const columns = [
         {
-            name: 'Nombre',
-            selector: (row: { name: string; }) => row.name,
+            name: 'id',
+            selector: (row: { id: number; }) => row.id,
             sortable: true,
         },
         {
-            name: 'Apellido',
-            selector: (row: { lastName: string; }) => row.lastName,
+            name: 'Nombres',
+            selector: (row: { Nombres: string; }) => row.Nombres,
             sortable: true,
         },
         {
-            name: 'DNI',
-            selector: (row: { DNI: string; }) => row.DNI,
+            name: 'Apellidos',
+            selector: (row: { Apellidos: string; }) => row.Apellidos,
+            sortable: true,
+        },
+        {
+            name: 'FechaContratacion',
+            selector: (row: { FechaContratacion: string; }) => row.FechaContratacion,
+            sortable: true,
+        },
+        {
+            name: 'Telefono',
+            selector: (row: { Telefono: string; }) => row.Telefono,
+            sortable: true,
+        },
+        {
+            name: 'Correo',
+            selector: (row: { Correo: string; }) => row.Correo,
+            sortable: true,
+        },
+        {
+            name: 'Rol',
+            selector: (row: { Rol: string; }) => row.Rol,
             sortable: true,
         },
         {
             name: 'Acciones',
             cell: () => <>
-                <DropdownMenu>
-                    <DropdownMenuTrigger>
-                        <SlOptionsVertical />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="bg-black p-2 text-white border-none rounded-lg">
-                        <DropdownMenuItem>
-                            <Link className="min-w-full w-full flex justify-between items-center gap-3" to={'xd'}>
-                                <span>Visualizar</span> <VscEye className="w-5 h-5" />
-                            </Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                            <Link className="min-w-full w-full flex justify-between items-center gap-3" to={'xd'}>
-                                <span>Editar</span> <FiEdit3 className="w-5 h-5" />
-                            </Link>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                            <Link className="min-w-full w-full flex justify-between items-center gap-3" to={'xd'}>
-                                <span>Eliminar</span> <MdOutlineDeleteSweep className="w-5 h-5" />
-                            </Link>
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-
+                <ActionsDB LinkE="edit/employ" LinkD="delete/employ" />
             </>,
         }
     ];
 
-    const data = [
-        {
-            name: 'Jhon',
-            lastName: 'Doe',
-            DNI: '12345678'
-        },
-        {
-            name: 'Jane',
-            lastName: 'Doe',
-            DNI: '87654321'
-        },
-        {
-            name: 'Jane',
-            lastName: 'Doe',
-            DNI: '87654321'
-        }
-    ];
+    const ExportToExcelButton = ({ data }: { data: ColaboradorType[] }) => () => {
+        const ws = XLSX.utils.json_to_sheet(data);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+        XLSX.writeFile(wb, "Colaboradores.xlsx");
+    }
 
-    createTheme('solarized', {
-        background: {
-            default: 'transparent',
-        },
-        context: {
-            background: '#cb4b16',
-            text: '#FFFFFF',
-        },
-        divider: {
-            default: '#CDCDCD',
-        },
-        action: {
-            button: 'rgba(0,0,0,.54)',
-            hover: 'rgba(0,0,0,.08)',
-            disabled: 'rgba(0,0,0,.12)',
-        },
-    }, 'dark');
+
 
     return (
         <TemplateDashboard>
@@ -114,49 +89,25 @@ export default function ColaboradoresPage() {
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="bg-black p-2 text-white border-none rounded-lg">
-                                <DropdownMenuItem className="items-center flex gap-2 justify-between">
+                                <DropdownMenuItem onClick={ExportToExcelButton({ data })} className="items-center flex gap-2 justify-between">
                                     <span>Excel</span> <SiMicrosoftexcel className="w-4 h-4" />
                                 </DropdownMenuItem>
                                 <DropdownMenuItem className="items-center flex gap-2 justify-between">
-                                    <span>PDF</span> <FaRegFilePdf className="w-4 h-4" />
-                                </DropdownMenuItem>
-                                <DropdownMenuItem className="items-center flex gap-2 justify-between">
-                                    <span>CSV</span> <BsFiletypeCsv className="w-4 h-4" />
+                                    <CSVLink data={data} filename="Colaboradores.csv" className="w-full">
+                                        <span>CSV</span>
+                                    </CSVLink>
+                                    <BsFiletypeCsv className="w-4 h-4" />
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
                     </div>
                 </div>
-                <Datatable
-                    className="mt-5"
-                    columns={columns}
-                    data={data}
-                    selectableRows
-                    paginationPerPage={10}
-                    pagination
-                    customStyles={{
-                        rows: {
-                            style: {
-                                backgroundColor: "transparent",
-                                color: '#FFF',
-                            }
-                        },
-                        headRow: {
-                            style: {
-                                backgroundColor: '#050A22',
-                                color: '#FFF',
-                                fontSize: '14px',
-                            }
-                        },
-                    }}
-                    onSelectedRowsChange={(data => console.log(data))}
-                    theme="solarized"
-                >
-
-                </Datatable>
+                <DataTableTMPLT columns={columns} data={data} />
                 <div>
                     <div>
-                        <Button className="bg-black flex items-center gap-3">
+                        <Button className="bg-black flex items-center gap-3"
+                        
+                        >
                             <LuUserPlus className="w-5 h-5" />
                             <span>
                                 Agregar colaborador

@@ -1,18 +1,17 @@
 import { Cloud, CreditCard, Github, Keyboard, LifeBuoy, LogOut, Plus, Settings, User, Users, } from "lucide-react"
 import { IoSettingsSharp } from "react-icons/io5";
-import {DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger,} from "../../../components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger, } from "../../../components/ui/dropdown-menu"
+
 
 export function DropdownMenuDemo() {
-
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <button>
-                    <IoSettingsSharp className="text-gray-200 w-5  h-5" />
+                <button className="w-max">
+                    <IoSettingsSharp className="text-gray-200 w-5 h-5" />
                 </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 bg-black border-gray-600 text-white">
-                <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                     <DropdownMenuItem>
                         <User className="mr-2 h-4 w-4" />
@@ -23,16 +22,6 @@ export function DropdownMenuDemo() {
                         <CreditCard className="mr-2 h-4 w-4" />
                         <span>Billing</span>
                         <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        <Settings className="mr-2 h-4 w-4" />
-                        <span>Settings</span>
-                        <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        <Keyboard className="mr-2 h-4 w-4" />
-                        <span>Keyboard shortcuts</span>
-                        <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
@@ -59,12 +48,6 @@ export function DropdownMenuDemo() {
                 <DropdownMenuItem disabled>
                     <Cloud className="mr-2 h-4 w-4" />
                     <span>API</span>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
-                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

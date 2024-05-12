@@ -18,7 +18,7 @@ export const ListItems: LinksItems[] = [
         clave: 'Proyectos',
         valor: '/proyectos',
         Icon: IconProjects,
-        permission: 1
+        permission: 1 && 2
     },
     {
         clave: 'Agenda',
@@ -27,16 +27,28 @@ export const ListItems: LinksItems[] = [
         permission: 1
     },
     {
+        clave: 'Informes',
+        valor: '/informes',
+        Icon: IconReports,
+        permission: 1 && 2
+    },
+    {
+        clave: 'Dashboard AA',
+        valor: '/dashboard-aa',
+        Icon: IconMembers,
+        permission: 2
+    },
+    {
         clave: 'Tickets',
         valor: '/tickets',
         Icon: IconTickets,
         permission: 2
     },
     {
-        clave: 'Informes',
-        valor: '/informes',
-        Icon: IconReports,
-        permission: 1
-    },
+        clave: 'Proyectos S.P',
+        valor: '/proyectos',
+        Icon: IconProjects,
+        permission: 3
+    }
 
 ]

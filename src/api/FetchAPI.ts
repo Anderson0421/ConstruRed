@@ -4,7 +4,7 @@ import { UserType } from "./type";
 
 axios.defaults.withCredentials = true;
 
-const API_URL = axios.create({
+export const API_URL = axios.create({
     baseURL: 'https://apiconstrured.onrender.com'
 })
 
