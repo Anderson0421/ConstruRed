@@ -1,32 +1,22 @@
 import { Input } from '../../components/ui/input';
-import { LoginUsers } from '../../api/FetchAPI';
-import { useMutation } from "@tanstack/react-query";
 import { UserType } from '../../api/type';
-import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../../assets/images/wback3.webp';
+import { LoginUsers } from '../../api/FetchAPI';
+
 
 export default function LoginPage() {
-
-    const history = useNavigate()
-
-    const addUserMutation = useMutation({
-        mutationFn: LoginUsers,
-        onSuccess: () => {
-            history('/')
-        },
-        onError: () => {
-            console.log('XD error')
-        }
-    })
-
     const HandleClickOnSumit = async (e: React.FormEvent) => {
         e.preventDefault()
         const formData = new FormData(e.target as HTMLFormElement)
         const User: UserType = {
-            Correo: formData.get('Correo') as string,
-            Contraseña: formData.get('Contraseña') as string
+            Correo: formData.get('email') as string,
+            Contraseña: formData.get('password') as string
         }
-        await addUserMutation.mutate(User)
+        const res = await LoginUsers(User)
+        if (res) {
+            localStorage.setItem('DNIToken', res.user_profile.DNI)
+            localStorage.setItem('DataUser', JSON.stringify(res.user_profile))
+        }
     }
 
     return (
@@ -44,9 +34,9 @@ export default function LoginPage() {
                     Ingresa tus datos para iniciar sesion
                 </p>
                 <div className='w-3/4  max-lg:w-1/2 max-sm:w-full max-md:w-3/4 flex flex-col gap-5 text-gray-50'>
-                    <Input type='email' required className='bg-gray-900 rounded-xl text-black ' placeholder='Ingrese su email' name='Correo'
+                    <Input type='email'  autoComplete='Introduce your email' required className='bg-gray-900 rounded-xl text-white ' placeholder='Ingrese su email' name='email'
                     />
-                    <Input type='password' required className='bg-gray-900 rounded-xl text-black ' placeholder='Ingrese su password' name='Contraseña'
+                    <Input type='password' required autoComplete='Introduce your password' className='bg-gray-900 rounded-xl text-white ' placeholder='Ingrese su password' name='password'
                     />
                     <button className='bg-blue-700 mt-2 text-white w-full h-10 rounded-lg'>
                         Iniciar sesion

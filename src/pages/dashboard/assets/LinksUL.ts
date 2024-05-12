@@ -1,31 +1,42 @@
 import { LinksItems } from "../type";
-import { IconHome, IconMembers, IconProjects, IconTasks, IconTickets } from "../../../assets/icons/Icons";
+import { IconHome, IconMembers, IconProjects, IconReports, IconTasks, IconTickets } from "../../../assets/icons/Icons";
 
 export const ListItems: LinksItems[] = [
     {
         clave: 'Dashboard',
         valor: '/',
-        Icon: IconHome
+        Icon: IconHome,
+        permission: 1
     },
     {
         clave: 'Miembros',
-        valor: '/members',
-        Icon: IconMembers
+        valor: '/colaboradores',
+        Icon: IconMembers,
+        permission: 1
     },
     {
         clave: 'Proyectos',
-        valor: '/projects',
-        Icon: IconProjects
+        valor: '/proyectos',
+        Icon: IconProjects,
+        permission: 1
     },
     {
-        clave: 'Tareas',
-        valor: '/tasks',
-        Icon: IconTasks
+        clave: 'Agenda',
+        valor: '/agenda',
+        Icon: IconTasks,
+        permission: 1
     },
     {
         clave: 'Tickets',
         valor: '/tickets',
-        Icon: IconTickets
+        Icon: IconTickets,
+        permission: 2
+    },
+    {
+        clave: 'Informes',
+        valor: '/informes',
+        Icon: IconReports,
+        permission: 1
     },
 
 ]

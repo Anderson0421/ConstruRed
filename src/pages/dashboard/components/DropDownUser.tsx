@@ -1,12 +1,8 @@
 import { Cloud, CreditCard, Github, Keyboard, LifeBuoy, LogOut, Plus, Settings, User, Users, } from "lucide-react"
 import { IoSettingsSharp } from "react-icons/io5";
-import {DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger,} from "../../../components/ui/dropdown-menu"
-import { SetDataUser } from "../../../store/setUserData";
+import {DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger,} from "../../../components/ui/dropdown-menu"
 
 export function DropdownMenuDemo() {
-
-    const user = SetDataUser(state => state.user);
-    const { user_profile } = user
 
     return (
         <DropdownMenu>
@@ -16,9 +12,6 @@ export function DropdownMenuDemo() {
                 </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 bg-black border-gray-600 text-white">
-                <DropdownMenuLabel>
-                    Signed in as {user_profile.Nombres} 
-                </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                     <DropdownMenuItem>
