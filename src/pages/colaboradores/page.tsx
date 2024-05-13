@@ -59,8 +59,8 @@ export default function ColaboradoresPage() {
         },
         {
             name: 'Acciones',
-            cell: () => <>
-                <ActionsDB LinkE="edit/employ" LinkD="delete/employ" />
+            cell: (row: { id: number }) => <>
+                <ActionsDB LinkE={`edit/${row.id}`} LinkD="delete/employ" />
             </>,
         }
     ];

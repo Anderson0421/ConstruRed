@@ -1,9 +1,19 @@
 import { Cloud, CreditCard, Github, LifeBuoy, Plus, User, Users, } from "lucide-react"
 import { IoSettingsSharp } from "react-icons/io5";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger, } from "../../../components/ui/dropdown-menu"
+import { useEffect, useState } from "react";
+import { DataUserType } from "../type";
+import { Link } from "react-router-dom";
 
 
 export function DropdownMenuDemo() {
+    const [DataUser, setDataUser] = useState<DataUserType>()
+
+    useEffect(() => {
+        const DataUser = JSON.parse(localStorage.getItem('DataUser') as string)
+        setDataUser(DataUser)
+    }, [])
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -14,29 +24,18 @@ export function DropdownMenuDemo() {
             <DropdownMenuContent className="w-56 bg-black border-gray-600 text-white">
                 <DropdownMenuGroup>
                     <DropdownMenuItem>
+                        <Link to={'/account/'} className="flex w-full justify-start items-center">
                         <User className="mr-2 h-4 w-4" />
                         <span>Profile</span>
-                        <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                        </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem disabled>
                         <CreditCard className="mr-2 h-4 w-4" />
-                        <span>Billing</span>
-                        <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                        <span>
+                            {DataUser?.Rol.Nombre}
+                        </span>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                        <Users className="mr-2 h-4 w-4" />
-                        <span>Team</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        <Plus className="mr-2 h-4 w-4" />
-                        <span>New Team</span>
-                        <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-                    </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
                 <DropdownMenuItem>
                     <Github className="mr-2 h-4 w-4" />
                     <span>GitHub</span>
@@ -45,9 +44,11 @@ export function DropdownMenuDemo() {
                     <LifeBuoy className="mr-2 h-4 w-4" />
                     <span>Support</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem disabled>
-                    <Cloud className="mr-2 h-4 w-4" />
-                    <span>API</span>
+                <DropdownMenuItem >
+                    <Link to={'https://apiconstrured.onrender.com/'} className="flex w-full justify-start items-center" target="_blank">
+                        <Cloud className="mr-2 h-4 w-4" />
+                        <span>API</span>
+                    </Link>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

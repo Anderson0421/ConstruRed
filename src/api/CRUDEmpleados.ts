@@ -11,10 +11,21 @@ export const GetEmpleados = async () => {
         data.forEach((e: any) => {
             e.Rol = ROL.data.find((r: any) => r.id === e.Rol).Nombre
         })
-        
+
         return res.data
     }
     catch (err) {
         console.log(err)
     }
 }
+
+export const GetOnlyEmpleado = async (id: number) => {
+    try {
+        const res = await API_URL.get(`/empleado/${id}`)
+        return res.data
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
+

@@ -7,6 +7,7 @@ import ProyectosPage from './pages/proyectos/page'
 import PageAgendaAdmin from './pages/agenda/page'
 import AccountPage from './pages/account/page'
 import PrediccionesPage from './pages/predicciones/page'
+import EditarEmpleado from './pages/colaboradores/Edit'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<Dashboard />} />
         <Route path="/colaboradores" element={<ColaboradoresPage />} />
+        <Route path="/colaboradores/edit/:id" element={<EditarEmpleado />} />
         <Route path="/informes" element={<InformesPage />} />
         <Route path="/proyectos" element={<ProyectosPage />} />
         <Route path="/agenda" element={<PageAgendaAdmin />} />
