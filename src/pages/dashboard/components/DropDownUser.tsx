@@ -1,6 +1,6 @@
-import { Cloud, CreditCard, Github, LifeBuoy, Plus, User, Users, } from "lucide-react"
+import { Cloud, CreditCard, Github, LifeBuoy, User, } from "lucide-react"
 import { IoSettingsSharp } from "react-icons/io5";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger, } from "../../../components/ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger, } from "../../../components/ui/dropdown-menu"
 import { useEffect, useState } from "react";
 import { DataUserType } from "../type";
 import { Link } from "react-router-dom";
