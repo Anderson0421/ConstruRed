@@ -1,11 +1,11 @@
-
+import TemplateDashboard from '../../layouts/TemplateDashboard';
 import DataTableTMPLT from '../../assets/DataTable/DataTableTemplate';
 import ActionsDB from '../../assets/DataTable/actions/ActionDataTable';
-import TemplateDashboard from '../../layouts/TemplateDashboard';
 
-export default function ProyectosPage() {
 
-    const DataProyectos = [
+export default function PrediccionesPage() {
+    // CAMBIAR LOS DATOS ESTOS SON DE PROYECTOS , SE DEBE CAMBIAR A DATOS DE HISTORIAL DE PREDICCIONES
+    const DataPredicciones = [
         {
             id: 1,
             nombre: 'Proyecto 1',
@@ -117,14 +117,30 @@ export default function ProyectosPage() {
             </>,
         }
     ];
+
     return (
         <TemplateDashboard>
-            <div>
-                <h1 className='text-white text-xl mt-3 font-semibold'>
-                    Gestión de Proyectos
-                </h1>
-                <DataTableTMPLT data={DataProyectos} columns={columns}>
-                </DataTableTMPLT>
+            <div className='text-white'>
+                <div>
+                    <h1 className='font-bold text-xl mt-2'>
+                        Sistema de Predicciones
+                    </h1>
+                    <p className='mt-2 text-sm'>
+                        Con este sistema podras predecir el comportamiento de tus proyectos y tomar decisiones en base a ello.
+                    </p>
+                    <hr className='mt-5 text-gray-500 mr-10' />
+                </div>
+                <div>
+                    <h1 className='mt-5 font-bold text-lg'>
+                        Historial de Predicciones
+                    </h1>
+                    <DataTableTMPLT
+                        data={DataPredicciones} columns={columns}
+                    />
+                    <button className='bg-slate-950/95 hover:bg-slate-950 text-white font-bold py-2 px-4 rounded mt-2'>
+                        Nueva Predicción
+                    </button>
+                </div>
             </div>
         </TemplateDashboard>
     )

@@ -6,6 +6,7 @@ import InformesPage from './pages/informes/page'
 import ProyectosPage from './pages/proyectos/page'
 import PageAgendaAdmin from './pages/agenda/page'
 import AccountPage from './pages/account/page'
+import PrediccionesPage from './pages/predicciones/page'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/proyectos" element={<ProyectosPage />} />
         <Route path="/agenda" element={<PageAgendaAdmin />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/predicciones" element={<PrediccionesPage />} />
       </Routes>
     </Router>
   )

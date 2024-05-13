@@ -4,11 +4,16 @@ import { PiUsersThreeLight } from "react-icons/pi";
 import { GoTasklist } from "react-icons/go";
 import { BsTicketPerforated } from "react-icons/bs";
 import { TbReport } from "react-icons/tb";
+import { LuLineChart } from "react-icons/lu";
 
 
 
 export function IconHome() {
     return <IoHome className="w-4 h-4" />
+}
+
+export function IconsPredict() {
+    return <LuLineChart className="w-4 h-4" />
 }
 
 export function IconProjects() {

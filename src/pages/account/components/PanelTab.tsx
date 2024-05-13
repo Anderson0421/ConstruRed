@@ -25,7 +25,7 @@ export function PanelTabComponent() {
                 <TabsTrigger value="history">History</TabsTrigger>
             </TabsList>
             <TabsContent value="account">
-                <Card className="bg-black/90 text-white border-none">
+                <Card className="bg-black/80 text-white border-none">
                     <CardHeader>
                         <CardTitle>
                             Mi cuenta
@@ -70,7 +70,7 @@ export function PanelTabComponent() {
                 </Card>
             </TabsContent>
             <TabsContent value="password">
-                <Card className="bg-black text-white border-none">
+                <Card className="bg-black/90 text-white border-none">
                     <CardHeader>
                         <CardTitle>Account</CardTitle>
                         <CardDescription>
@@ -80,11 +80,11 @@ export function PanelTabComponent() {
                     <CardContent className="space-y-2">
                         <div className="space-y-1 text-black">
                             <Label htmlFor="name">Name</Label>
-                            <Input id="name" defaultValue="Pedro Duarte" />
+                            <Input id="name" />
                         </div>
                         <div className="space-y-1 text-black">
                             <Label htmlFor="username">Username</Label>
-                            <Input id="username" defaultValue="@peduarte" />
+                            <Input id="username" />
                         </div>
                     </CardContent>
                     <CardFooter>

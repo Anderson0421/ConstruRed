@@ -17,13 +17,11 @@ export default function LoginPage() {
 
     function AlertSignInStatus(status: string) {
         const promise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (status === 'Success!') {
-                    resolve(status);
-                } else {
-                    reject(status);
-                }
-            }, 1000);
+            if (status === 'Success!') {
+                resolve(status);
+            } else {
+                reject(status);
+            }
         });
 
         toast.promise(
@@ -34,7 +32,7 @@ export default function LoginPage() {
                 error: 'Fallo en las credenciales 😢'
             },
             {
-                autoClose: 1000,
+                autoClose: 2000,
             }
         )
     }
@@ -48,10 +46,9 @@ export default function LoginPage() {
         const res = await LoginUsers(User)
         if (res) {
             setIsSubmitForm(false)
-            AlertSignInStatus('Success!')
             localStorage.setItem('DNIToken', res.user_profile.DNI)
             localStorage.setItem('DataUser', JSON.stringify(res.user_profile))
-            const ROL_USER = res.user_profile.Rol.id   
+            const ROL_USER = res.user_profile.Rol.id
             const item = ListItems.find(item => item.permission === ROL_USER)
             if (item) {
                 window.location.href = item.valor

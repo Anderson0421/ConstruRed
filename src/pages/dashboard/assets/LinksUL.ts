@@ -1,5 +1,5 @@
 import { LinksItems } from "../type";
-import { IconHome, IconMembers, IconProjects, IconReports, IconTasks, IconTickets } from "../../../assets/icons/Icons";
+import { IconHome, IconMembers, IconProjects, IconReports, IconTasks, IconTickets, IconsPredict } from "../../../assets/icons/Icons";
 
 export const ListItems: LinksItems[] = [
     {
@@ -24,6 +24,12 @@ export const ListItems: LinksItems[] = [
         clave: 'Agenda',
         valor: '/agenda',
         Icon: IconTasks,
+        permission: 1
+    },
+    {
+        clave: 'Predicciones',
+        valor: '/predicciones',
+        Icon: IconsPredict,
         permission: 1
     },
     {
