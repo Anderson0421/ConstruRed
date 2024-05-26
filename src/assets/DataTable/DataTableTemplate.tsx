@@ -1,4 +1,5 @@
 import Datatable, { createTheme } from "react-data-table-component";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function DataTableTMPLT({ columns, data }: { columns: any, data: any }) {
 
     createTheme('solarized', {
