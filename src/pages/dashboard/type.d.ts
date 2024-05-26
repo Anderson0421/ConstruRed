@@ -1,7 +1,7 @@
 export interface LinksItems {
     clave: string
     valor: string
-    Icon?: any
+    Icon?: unknown
     permission? : number
 }
 
@@ -18,4 +18,5 @@ export interface DataUserType {
         id: number
         Nombre: string
     }
+    Contraseña: string
 }

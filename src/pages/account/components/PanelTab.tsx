@@ -19,9 +19,6 @@ export function PanelTabComponent() {
         <Tabs defaultValue="account" >
             <TabsList className="grid w-full grid-cols-5 max-md:grid-cols-3 h-full pb-2 center gap-2 bg-gray-950 text-gray-400">
                 <TabsTrigger value="account" >Account</TabsTrigger>
-                <TabsTrigger value="password">Password</TabsTrigger>
-                <TabsTrigger value="tareas">Tareas</TabsTrigger>
-                <TabsTrigger value="proyectos">Proyectos</TabsTrigger>
                 <TabsTrigger value="history">History</TabsTrigger>
             </TabsList>
             <TabsContent value="account">
@@ -69,7 +66,7 @@ export function PanelTabComponent() {
                     </CardFooter>
                 </Card>
             </TabsContent>
-            <TabsContent value="password">
+            <TabsContent value="history">
                 <Card className="bg-black/90 text-white border-none">
                     <CardHeader>
                         <CardTitle>Account</CardTitle>

@@ -12,10 +12,12 @@ import ActionsDB from "../../assets/DataTable/actions/ActionDataTable";
 import * as XLSX from 'xlsx';
 import { ColaboradorType } from "../../api/type";
 import { CSVLink } from "react-csv";
+import { BiLoaderCircle } from "react-icons/bi";
+import { IoWarningOutline } from "react-icons/io5";
 
 export default function ColaboradoresPage() {
 
-    const { data } = useQuery({
+    const { data, isError } = useQuery({
         queryFn: GetEmpleados,
         queryKey: ['colaboradores'],
         staleTime: 1000 * 60 * 5,
@@ -65,13 +67,24 @@ export default function ColaboradoresPage() {
         }
     ];
 
+    
     const ExportToExcelButton = ({ data }: { data: ColaboradorType[] }) => () => {
+        data = data.map((item) => {
+            return {
+                id: item.id,
+                Nombres: item.Nombres,
+                Apellidos: item.Apellidos,
+                FechaContratacion: item.FechaContratacion,
+                Telefono: item.Telefono,
+                Correo: item.Correo,
+                Rol: item.Rol,
+            }
+        })
         const ws = XLSX.utils.json_to_sheet(data);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
         XLSX.writeFile(wb, "Colaboradores.xlsx");
     }
-
 
 
     return (
@@ -104,7 +117,24 @@ export default function ColaboradoresPage() {
                         </DropdownMenu>
                     </div>
                 </div>
-                <DataTableTMPLT columns={columns} data={data} />
+                {
+                    data ? data.length > 0 && <DataTableTMPLT columns={columns} data={data} /> : <div>
+                        <h1>
+                            {isError ? <div className="bg-red-600/70 mt-5 px-4 py-2 rounded-lg justify-between flex items-center w-max gap-5">
+                                <span> Error al obtener los datos</span> <IoWarningOutline />
+                            </div> :
+                                <div className="flex items-center gap-2 mt-5 text-lg">
+                                    <span>Loading</span>
+                                    <div role="status">
+                                        <BiLoaderCircle className="animate-spin" />
+                                        <span className="sr-only">Loading...</span>
+                                    </div>
+
+                                </div>
+                            }
+                        </h1>
+                    </div>
+                }
                 <div>
                     <Button className="bg-black flex mt-5 items-center gap-3">
                         <LuUserPlus className="w-5 h-5" />

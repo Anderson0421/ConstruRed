@@ -19,7 +19,7 @@ export default function TemplateDashboard({ children }: { children: React.ReactN
                     filter: 'blur(72px)  brightness(170%)',
                 }}
             />
-            <section className="ml-64 max-lg:ml-0 max-lg:px-5 z-10 flex-col   mt-5 flex h-max justify-between w-full">
+            <section className="ml-64 max-lg:ml-0 max-lg:px-5 z-10 flex-col  overflow-y-auto  mt-5 flex h-max justify-between w-full">
                 <NavbarDashboard />
                 {children}
             </section>

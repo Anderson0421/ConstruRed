@@ -7,6 +7,7 @@ import { SlOptionsVertical } from "react-icons/sl";
 import { Button } from "@nextui-org/react";
 
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export default function ActionsDB({ LinkV, LinkE, LinkD, Detalle }: { LinkV?: string, LinkE?: string, LinkD: string, Detalle?: Function }) {
     return (
         <DropdownMenu>

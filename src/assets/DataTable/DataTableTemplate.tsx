@@ -52,8 +52,6 @@ export default function DataTableTMPLT({ columns, data }: { columns: any, data: 
             }}
             onSelectedRowsChange={(data => console.log(data))}
             theme="solarized"
-        >
-
-        </Datatable>
+        />
     )
 }
