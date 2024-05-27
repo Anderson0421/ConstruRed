@@ -31,7 +31,7 @@ export default function AccountPage() {
                             </p>
                             <div className='text-gray-100 mt-1 flex text-sm items-center gap-2'>
                                 <span className='font-semibold bg-gray-950/50 p-1.5 rounded-sm shadow-xl'>DNI: <span className='font-normal'>73238321</span></span>
-                                <span className='font-semibold bg-gray-950/50 p-1.5 rounded-sm shadow-xl'>ROL: <span className='font-normal'>Desarrollador</span></span>
+                                <span className='font-semibold bg-gray-950/50 p-1.5 rounded-sm shadow-xl'>ROL: <span className='font-normal'>Gerente General</span></span>
                             </div>
                         </div>
                     </div>
