@@ -42,11 +42,6 @@ export default function ProyectosPage() {
             sortable: true,
         },
         {
-            name: 'Empleado',
-            selector: (row: { Empleado: string; }) => row.Empleado,
-            sortable: true,
-        },
-        {
             name: 'Acciones',
             cell: (row: { id: number }) => <>
                 <ActionsDB LinkV={`/proyectos/${row.id}/`} LinkE={`/proyectos/${row.id}/editar/`} LinkD="delete /predict" />

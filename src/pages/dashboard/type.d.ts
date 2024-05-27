@@ -15,6 +15,7 @@ export interface DataUserType {
     FechaContratacion: string
     Telefono: string
     Correo: string
+    Foto: string
     Rol: {
         id: number
         Nombre: string

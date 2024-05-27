@@ -21,6 +21,7 @@ export interface ProyectoType{
     FechaFinal:string
     Empleado: number
     Imagen?:string
+    PctTareas:number
 }
 
 export interface ArchivoType{

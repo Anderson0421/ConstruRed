@@ -5,11 +5,15 @@ import { GoTasklist } from "react-icons/go";
 import { BsTicketPerforated } from "react-icons/bs";
 import { TbReport } from "react-icons/tb";
 import { LuLineChart } from "react-icons/lu";
-
+import { MdOutlineGroups } from "react-icons/md";
 
 
 export function IconHome() {
     return <IoHome className="w-4 h-4" />
+}
+
+export function IconGroup() {
+    return <MdOutlineGroups className="w-4 h-4" />
 }
 
 export function IconsPredict() {

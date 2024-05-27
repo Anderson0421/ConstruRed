@@ -1,5 +1,5 @@
 import { LinksItems } from "../type";
-import { IconHome, IconMembers, IconProjects, IconTickets, IconsPredict } from "../../../assets/icons/Icons";
+import { IconHome, IconMembers, IconProjects, IconTickets, IconsPredict, IconGroup } from "../../../assets/icons/Icons";
 
 export const ListItems: LinksItems[] = [
     {
@@ -15,14 +15,20 @@ export const ListItems: LinksItems[] = [
         permission: 1
     },
     {
+        clave: 'Grupos',
+        valor: '/grupos',
+        Icon: IconGroup,
+        permission: 1
+    },
+    {
         clave: 'Proyectos',
         valor: '/proyectos',
         Icon: IconProjects,
         permission: 1 || 2
     },
     {
-        clave: 'Predicciones',
-        valor: '/predicciones',
+        clave: 'Analytics',
+        valor: '/analytics',
         Icon: IconsPredict,
         permission: 1
     },

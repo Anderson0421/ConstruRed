@@ -8,7 +8,7 @@ import { Button } from "@nextui-org/react";
 
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export default function ActionsDB({ LinkV, LinkE, LinkD, Detalle }: { LinkV?: string, LinkE?: string, LinkD: string, Detalle?: Function }) {
+export default function ActionsDB({ LinkV, LinkE, LinkD, Detalle }: { LinkV?: string, LinkE?: string, LinkD?: string, Detalle?: Function }) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger>
@@ -40,9 +40,12 @@ export default function ActionsDB({ LinkV, LinkE, LinkD, Detalle }: { LinkV?: st
                     </DropdownMenuItem>
                 }
                 <DropdownMenuItem>
-                    <Link className="min-w-full w-full flex justify-between items-center gap-3" to={LinkD}>
-                        <span>Eliminar</span> <MdOutlineDeleteSweep className="w-5 h-5" />
-                    </Link>
+                    {
+                        LinkD && 
+                        <Link className="min-w-full w-full flex justify-between items-center gap-3" to={LinkD}>
+                            <span>Eliminar</span> <MdOutlineDeleteSweep className="w-5 h-5" />
+                        </Link>
+                    }
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

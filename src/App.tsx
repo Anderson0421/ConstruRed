@@ -10,6 +10,8 @@ import PrediccionesPage from './pages/predicciones/page'
 import EditarEmpleado from './pages/colaboradores/Edit'
 import DetailProyect from './pages/proyectos/detail'
 import EditProyect from './pages/proyectos/editar'
+import GrupoPage from './pages/grupos/page'
+import DetailGrupo from './pages/grupos/detail/page'
 
 function App() {
   return (
@@ -38,7 +40,12 @@ function App() {
         <Route path="/account" element={<AccountPage />} />
         
         {/* Predicciones */}
-        <Route path="/predicciones" element={<PrediccionesPage />} />
+        <Route path="/analytics" element={<PrediccionesPage />} />
+
+        {/* Grupos */}
+        <Route path="/grupos" element={<GrupoPage />} />
+        <Route path="/grupos/grupo/:id/" element={<DetailGrupo />} />
+
       </Routes>
     </Router>
   )

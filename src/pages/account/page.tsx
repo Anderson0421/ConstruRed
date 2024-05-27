@@ -19,7 +19,7 @@ export default function AccountPage() {
             <div className='p-4 max-sm:px-1'>
                 <div className='flex justify-between items-center max-sm:flex-wrap'>
                     <div className='flex items-start gap-3 max-sm:justify-center max-sm:flex-wrap'>
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="reactIcon"
+                        <img src={`${DatosUsuarios?.Foto}?sp=racwdli&st=2024-04-14T00:13:42Z&se=2026-10-13T08:13:42Z&sv=2022-11-02&sr=c&sig=q9N9P9sev2O8erCIkIq5KN6CBT9FVoKXrWqxIyqM5HQ%3D`} alt="reactIcon"
                             className='w-28 rounded-xl h-28 max-sm:w-40 max-sm:h-40' />
                         <div className='mt-2'>
                             <h1 className='font-semibold text-lg text-white'>
